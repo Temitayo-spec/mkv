@@ -1,3 +1,4 @@
+'use client';
 import { Stack } from '@chakra-ui/react';
 import { Metadata } from 'next';
 

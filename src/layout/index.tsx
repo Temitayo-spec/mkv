@@ -8,12 +8,12 @@ const OverallLayout: FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   return (
     <Provider>
-      <HStack>
+      <HStack align="flex-start" bg="bg.1" gap={0} w="100vw">
         <Sidebar
           isCollapsed={isCollapsed}
           onToggle={() => setIsCollapsed(!isCollapsed)}
         />
-        <VStack>
+        <VStack w="100%" flex={1}>
           <Navbar />
           {children}
         </VStack>
