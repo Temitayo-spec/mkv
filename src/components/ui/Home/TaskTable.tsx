@@ -21,6 +21,7 @@ export const TaskTable: React.FC<{
     borderWidth="1px"
     borderRadius="0.625rem 0.625rem 0 0"
     height="350px"
+    borderColor="strokes.1"
   >
     <Table.Root
       variant="line"
@@ -31,7 +32,7 @@ export const TaskTable: React.FC<{
       interactive
     >
       <Table.Header>
-        <Table.Row bg="bg.1" h="4.5rem">
+        <Table.Row bg="bg.1" h="4.5rem" color="text.black_1">
           <Table.ColumnHeader
             px="2.5rem"
             borderRight="0.125rem solid rgba(205, 214, 233, 0.60)"
@@ -56,7 +57,12 @@ export const TaskTable: React.FC<{
       </Table.Header>
       <Table.Body>
         {tasks.map((task) => (
-          <Table.Row key={task.id} _hover={{ bg: 'gray.50' }} h="5rem">
+          <Table.Row
+            key={task.id}
+            bg="white"
+            _hover={{ bg: 'gray.50' }}
+            h="5rem"
+          >
             <Table.Cell
               pl="2.5rem"
               fontWeight="600"
@@ -74,9 +80,9 @@ export const TaskTable: React.FC<{
               {task.startDate} - {task.endDate}
             </Table.Cell>
             <Table.Cell>
-              <AvatarGroup size="sm">
+              <AvatarGroup size="sm" bg="transparent">
                 {task.assignees.map((user) => (
-                  <Avatar.Root key={user.id} size="sm" w="1.25rem" h="1.25rem">
+                  <Avatar.Root key={user.id} size="sm">
                     <Avatar.Image src={user.avatar} w="1.25rem" h="1.25rem" />
                     <Avatar.Fallback name={user.name} fontSize="xs" />
                   </Avatar.Root>
@@ -101,23 +107,24 @@ export const TaskTable: React.FC<{
                   <IconButton
                     aria-label="Options"
                     variant="ghost"
-                    size="sm"
                     bg="bg.1"
                     h="1.875rem"
                     w="2.5rem"
+                    color="#6C7278"
                   >
                     <More />
                   </IconButton>
                 </Menu.Trigger>
                 <Portal>
                   <Menu.Positioner>
-                    <Menu.Content>
+                    <Menu.Content bg="bg.1">
                       <Menu.Item
                         value="edit"
                         onSelect={() => onEditTask(task)}
                         p="0.5rem"
                         color="icons.1"
                         fontSize="sm"
+                        fontWeight="600"
                       >
                         Edit
                       </Menu.Item>

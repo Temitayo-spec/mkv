@@ -31,7 +31,7 @@ const LanguageSelect = () => {
         </Text>
       </HStack>
 
-      <ArrowDown2 size={16} />
+      <ArrowDown2 size={16} color="#464B50" />
     </HStack>
   );
 };

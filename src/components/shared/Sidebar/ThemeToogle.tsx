@@ -29,12 +29,12 @@ const ThemeToogle: FC<{
         checked={isDark}
         onCheckedChange={(details) => setIsDark(details.checked)}
         size="sm"
-        colorScheme="blue"
         aria-label="Dark mode toggle"
+        bg="#BAC1CC"
       >
         <Switch.HiddenInput />
         <Switch.Control>
-          <Switch.Thumb />
+          <Switch.Thumb color="white" />
         </Switch.Control>
       </Switch.Root>
     </HStack>

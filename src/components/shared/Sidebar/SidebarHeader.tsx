@@ -23,7 +23,7 @@ const SidebarHeader: FC<{
         transform={isCollapsed ? 'rotate(180deg)' : 'none'}
         transition="transform 0.3s ease"
       >
-        <ArrowLeft size={18} />
+        <ArrowLeft size={18} color="#1A1C1E" />
       </IconButton>
     </Flex>
   );

@@ -59,11 +59,7 @@ export const SidebarItem: React.FC<{
             >
               {item.label}
             </Text>
-            {item.badge ? (
-              <Badge colorScheme="red" borderRadius="full" px={2} py={0.5}>
-                {item.badge}
-              </Badge>
-            ) : null}
+
             {hasChildren && (
               <Box>
                 {isOpen ? <ArrowUp2 size={16} /> : <ArrowDown2 size={16} />}

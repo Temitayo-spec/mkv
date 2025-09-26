@@ -164,8 +164,9 @@ export const TaskManagementInterface: React.FC = () => {
             px="1.25rem"
             borderRadius="0.625rem"
             fontWeight="600"
+            color="white"
           >
-            <ExportCurve color="white" />
+            <ExportCurve />
             Export xlsx
           </Button>
           <Button
@@ -176,6 +177,7 @@ export const TaskManagementInterface: React.FC = () => {
             px="1.25rem"
             borderRadius="0.625rem"
             fontWeight="600"
+            color="white"
           >
             <AddCircle />
             Add Task
@@ -218,20 +220,18 @@ export const TaskManagementInterface: React.FC = () => {
 
         <HStack gap="0.25rem" bg="white" p="0.37rem" borderRadius="0.375rem">
           <Button
-            variant={viewMode === 'list' ? 'solid' : 'outline'}
             onClick={() => setViewMode('list')}
-            size="sm"
             p="0.25rem"
-            bg={viewMode === 'list' ? 'bg.aqua_blue' : 'transparent'}
+            bg={viewMode === 'list' ? 'bg.aqua_blue' : '#F7F7F7'}
+            color={viewMode === 'list' ? 'white' : '#7988A9'}
           >
             <RowHorizontal />
           </Button>
           <Button
-            variant={viewMode === 'kanban' ? 'solid' : 'outline'}
             onClick={() => setViewMode('kanban')}
-            size="sm"
             p="0.25rem"
-            bg={viewMode === 'kanban' ? 'bg.aqua_blue' : 'transparent'}
+            bg={viewMode === 'kanban' ? 'bg.aqua_blue' : '#F7F7F7'}
+            color={viewMode === 'kanban' ? 'white' : '#7988A9'}
           >
             <RowVertical />
           </Button>
@@ -282,7 +282,17 @@ export const TaskManagementInterface: React.FC = () => {
                     All Tasks
                   </Text>
                 </HStack>
-                <Badge bg="#F9F3FF" rounded="0.375rem" p="0.625rem" h="2rem">
+                <Badge
+                  bg="#F9F3FF"
+                  rounded="0.375rem"
+                  p="0.625rem"
+                  h="2rem"
+                  color="icons.2"
+                  fontSize="sm"
+                  letterSpacing="-0.0175rem"
+                  fontWeight="500"
+                  lineHeight="100%"
+                >
                   ({tasks.length})
                 </Badge>
               </HStack>
@@ -324,6 +334,11 @@ export const TaskManagementInterface: React.FC = () => {
                       rounded="0.375rem"
                       p="0.625rem"
                       h="2rem"
+                      color="icons.2"
+                      fontSize="sm"
+                      letterSpacing="-0.0175rem"
+                      fontWeight="500"
+                      lineHeight="100%"
                     >
                       ({taskCounts[status as keyof typeof taskCounts]})
                     </Badge>

@@ -40,6 +40,7 @@ export const CustomPagination: React.FC<{
       borderWidth="1px"
       borderColor="strokes.1"
       borderTop={0}
+      fontFamily={'var(--font-montserrat)'}
     >
       <Pagination.Root
         count={totalItems}
@@ -59,6 +60,7 @@ export const CustomPagination: React.FC<{
             onClick={() => onPageChange(1)}
             disabled={currentPage === 1}
             _hover={{ bg: 'gray.50' }}
+            color="#1A1C1E"
           >
             <ArrowLeft2 size={10} />
             <Box transform="translateX(-18px)">
@@ -67,7 +69,12 @@ export const CustomPagination: React.FC<{
           </IconButton>
 
           <Pagination.PrevTrigger asChild>
-            <IconButton size="sm" variant="ghost" _hover={{ bg: 'gray.50' }}>
+            <IconButton
+              size="sm"
+              variant="ghost"
+              _hover={{ bg: 'gray.50' }}
+              color="#1A1C1E"
+            >
               <ArrowLeft2 size={16} />
             </IconButton>
           </Pagination.PrevTrigger>
@@ -103,7 +110,12 @@ export const CustomPagination: React.FC<{
           />
 
           <Pagination.NextTrigger asChild>
-            <IconButton size="sm" variant="ghost" _hover={{ bg: 'gray.50' }}>
+            <IconButton
+              size="sm"
+              variant="ghost"
+              _hover={{ bg: 'gray.50' }}
+              color="#1A1C1E"
+            >
               <ArrowRight2 size={16} />
             </IconButton>
           </Pagination.NextTrigger>
@@ -114,6 +126,7 @@ export const CustomPagination: React.FC<{
             onClick={() => onPageChange(totalPages)}
             disabled={currentPage === totalPages}
             _hover={{ bg: 'gray.50' }}
+            color="#1A1C1E"
           >
             <Box transform="translateX(18px)">
               <ArrowLeft2 size={10} style={{ transform: 'rotate(180deg)' }} />
@@ -148,23 +161,27 @@ export const CustomPagination: React.FC<{
               h="2.5rem"
               pl="1.25rem"
               py="0.94rem"
+              color="#545464"
+              fontWeight={600}
             >
               <Select.ValueText />
             </Select.Trigger>
             <Select.IndicatorGroup>
-              <Select.Indicator pr="0.94rem">
+              <Select.Indicator pr="0.94rem" color="#1A1C1E">
                 <ArrowDown2 size={12} />
               </Select.Indicator>
             </Select.IndicatorGroup>
           </Select.Control>
           <Select.Positioner>
-            <Select.Content>
+            <Select.Content bg="bg.1">
               {pageSizeCollection.items.map((item) => (
                 <Select.Item
                   item={item}
                   key={item.value}
                   p="0.5rem"
                   fontSize="sm"
+                  color="#545464"
+                  fontWeight={600}
                 >
                   {item.label}
                   <Select.ItemIndicator />
