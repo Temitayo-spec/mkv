@@ -25,7 +25,7 @@ export const KanbanBoard: React.FC<{
       alignItems="start"
     >
       {Object.entries(STATUS_CONFIG).map(([status]) => (
-        <Box key={status} _hover={{ shadow: 'sm' }} transition="all 0.2s" w="100%" flex={1}>
+        <Box key={status} w="100%" flex={1}>
           <KanbanColumn
             status={status as Task['status']}
             tasks={tasksByStatus[status as keyof typeof tasksByStatus]}
