@@ -1,17 +1,20 @@
 'use client';
 
-import { SimpleGrid } from "@chakra-ui/react";
-import { KanbanColumn } from "./KanbanColumn";
+import { SimpleGrid, Box } from '@chakra-ui/react';
+import { KanbanColumn } from './KanbanColumn';
+import {} from 'iconsax-reactjs';
+import { STATUS_CONFIG } from '@/constants/task-management';
 
 export const KanbanBoard: React.FC<{
   tasks: Task[];
   onEdit: (task: Task) => void;
   onAddTask: (status: Task['status']) => void;
 }> = ({ tasks, onEdit, onAddTask }) => {
-  const statuses: Task['status'][] = ['To Do', 'In Progress', 'Complete'];
-
-  const getTasksByStatus = (status: Task['status']) =>
-    tasks.filter((task) => task.status === status);
+  const tasksByStatus = {
+    'To Do': tasks.filter((task) => task.status === 'To Do'),
+    'In Progress': tasks.filter((task) => task.status === 'In Progress'),
+    Complete: tasks.filter((task) => task.status === 'Complete'),
+  };
 
   return (
     <SimpleGrid
@@ -21,14 +24,15 @@ export const KanbanBoard: React.FC<{
       px="1.25rem"
       alignItems="start"
     >
-      {statuses.map((status) => (
-        <KanbanColumn
-          key={status}
-          status={status}
-          tasks={getTasksByStatus(status)}
-          onEdit={onEdit}
-          onAddTask={onAddTask}
-        />
+      {Object.entries(STATUS_CONFIG).map(([status]) => (
+        <Box key={status} _hover={{ shadow: 'sm' }} transition="all 0.2s" w="100%" flex={1}>
+          <KanbanColumn
+            status={status as Task['status']}
+            tasks={tasksByStatus[status as keyof typeof tasksByStatus]}
+            onEdit={onEdit}
+            onAddTask={onAddTask}
+          />
+        </Box>
       ))}
     </SimpleGrid>
   );

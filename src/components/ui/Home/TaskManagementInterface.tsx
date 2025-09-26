@@ -24,14 +24,17 @@ import {
   RowVertical,
   TaskSquare,
 } from 'iconsax-reactjs';
-import { mockTasks, STATUS_CONFIG } from '@/constants/task-management';
+import { STATUS_CONFIG } from '@/constants/task-management';
 import { TaskTable } from './TaskTable';
 import { CustomPagination } from './CustomPagination';
 import { KanbanBoard } from './KanbanBoard';
 import { AddTaskModal } from './AddTaskModal';
+import { useTasks, useTaskActions } from '@/store/task-store';
 
 export const TaskManagementInterface: React.FC = () => {
-  const [tasks, setTasks] = useState<Task[]>(mockTasks);
+  const tasks = useTasks();
+  const { addTask } = useTaskActions();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<'list' | 'kanban'>('list');
   const [selectedStatus, setSelectedStatus] = useState<'all' | Task['status']>(
@@ -74,11 +77,7 @@ export const TaskManagementInterface: React.FC = () => {
   }, [tasks]);
 
   const handleAddTask = (newTask: Omit<Task, 'id'>) => {
-    const task: Task = {
-      ...newTask,
-      id: Date.now().toString(),
-    };
-    setTasks((prev) => [...prev, task]);
+    addTask(newTask);
   };
 
   const handleEditTask = (task: Task) => {

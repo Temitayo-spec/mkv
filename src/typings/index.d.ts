@@ -39,3 +39,13 @@ interface FormErrors {
 
 type FormDataField = keyof typeof formData;
 type FormDataValue = string | User[] | Task['priority'] | Task['status'];
+
+interface TaskState {
+  tasks: Task[];
+  addTask: (task: Omit<Task, 'id'>) => void;
+  updateTask: (id: string, updates: Partial<Task>) => void;
+  deleteTask: (id: string) => void;
+  markTaskCompleted: (id: string) => void;
+  markTaskIncomplete: (id: string) => void;
+  toggleTaskStatus: (id: string) => void;
+}

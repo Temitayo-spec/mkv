@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { Add } from 'iconsax-reactjs';
 import { TaskCard } from './TaskCard';
+import { useTaskActions } from '@/store/task-store';
 
 export const KanbanColumn: React.FC<{
   status: Task['status'];
@@ -19,11 +20,32 @@ export const KanbanColumn: React.FC<{
   onEdit: (task: Task) => void;
   onAddTask: (status: Task['status']) => void;
 }> = ({ status, tasks, onEdit, onAddTask }) => {
+  const { updateTask } = useTaskActions();
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const taskId = e.dataTransfer.getData('taskId');
+    if (taskId) {
+      updateTask(taskId, { status });
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
   const config = STATUS_CONFIG[status];
   const IconComponent = config.icon;
 
   return (
-    <Box bg="bg.1" borderRadius="0.375rem" overflow="hidden" h="auto">
+    <Box
+      bg="bg.1"
+      borderRadius="0.375rem"
+      overflow="hidden"
+      h="auto"
+      onDrop={handleDrop}
+      onDragOver={handleDragOver}
+    >
       <HStack justify="space-between" bg={config.bg} p="0.63rem">
         <HStack>
           <HStack
@@ -73,7 +95,7 @@ export const KanbanColumn: React.FC<{
       <Box p="0.31rem">
         <VStack gap="0.31rem">
           {tasks.map((task) => (
-            <TaskCard key={task.id} task={task} onEdit={onEdit} />
+            <DraggableTaskCard key={task.id} task={task} onEdit={onEdit} />
           ))}
           <Button
             variant="ghost"
@@ -89,10 +111,34 @@ export const KanbanColumn: React.FC<{
             color="#464B50"
           >
             <Add size={20} />
-            <Text fontSize="sm" fontWeight="500">Add Task</Text>
+            <Text fontSize="sm" fontWeight="500">
+              Add Task
+            </Text>
           </Button>
         </VStack>
       </Box>
+    </Box>
+  );
+};
+
+const DraggableTaskCard: React.FC<{
+  task: Task;
+  onEdit: (task: Task) => void;
+}> = ({ task, onEdit }) => {
+  const handleDragStart = (e: React.DragEvent) => {
+    e.dataTransfer.setData('taskId', task.id);
+  };
+
+  return (
+    <Box
+      draggable
+      onDragStart={handleDragStart}
+      cursor="grab"
+      _active={{ cursor: 'grabbing' }}
+      flex="1"
+      w="100%"
+    >
+      <TaskCard task={task} onEdit={onEdit} />
     </Box>
   );
 };
