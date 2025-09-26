@@ -32,27 +32,35 @@ export const TaskTable: React.FC<{
       interactive
     >
       <Table.Header>
-        <Table.Row bg="bg.1" h="4.5rem" color="text.black_1">
+        <Table.Row bg="bg.1" h="4.5rem">
           <Table.ColumnHeader
             px="2.5rem"
             borderRight="0.125rem solid rgba(205, 214, 233, 0.60)"
+            color="text.black_1"
           >
             Name
           </Table.ColumnHeader>
           <Table.ColumnHeader
             px="0.88rem"
             borderRight="0.125rem solid rgba(205, 214, 233, 0.60)"
+            color="text.black_1"
           >
             Date
           </Table.ColumnHeader>
           <Table.ColumnHeader
             px="0.88rem"
             borderRight="0.125rem solid rgba(205, 214, 233, 0.60)"
+            color="text.black_1"
           >
             Assignee
           </Table.ColumnHeader>
-          <Table.ColumnHeader px="0.88rem">Priority</Table.ColumnHeader>
-          <Table.ColumnHeader px="0.88rem"></Table.ColumnHeader>
+          <Table.ColumnHeader px="0.88rem" color="text.black_1">
+            Priority
+          </Table.ColumnHeader>
+          <Table.ColumnHeader
+            px="0.88rem"
+            color="text.black_1"
+          ></Table.ColumnHeader>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -68,6 +76,7 @@ export const TaskTable: React.FC<{
               fontWeight="600"
               fontSize="sm"
               color="icons.2"
+              borderColor="#CDD6E9"
             >
               {task.name}
             </Table.Cell>
@@ -76,20 +85,27 @@ export const TaskTable: React.FC<{
               fontSize="sm"
               color="icons.2"
               px="0.88rem"
+              borderColor="#CDD6E9"
             >
               {task.startDate} - {task.endDate}
             </Table.Cell>
-            <Table.Cell>
-              <AvatarGroup size="sm" bg="transparent">
+            <Table.Cell borderColor="#CDD6E9">
+              <AvatarGroup size="sm">
                 {task.assignees.map((user) => (
-                  <Avatar.Root key={user.id} size="sm">
-                    <Avatar.Image src={user.avatar} w="1.25rem" h="1.25rem" />
+                  <Avatar.Root
+                    key={user.id}
+                    w="1.25rem"
+                    h="1.25rem"
+                    bg="transparent"
+                    border="none"
+                  >
+                    <Avatar.Image src={user.avatar} />
                     <Avatar.Fallback name={user.name} fontSize="xs" />
                   </Avatar.Root>
                 ))}
               </AvatarGroup>
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell borderColor="#CDD6E9">
               <HStack gap="0.87rem">
                 <Flag
                   color={PRIORITY_COLORS[task.priority]}
@@ -101,7 +117,7 @@ export const TaskTable: React.FC<{
                 </Text>
               </HStack>
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell borderColor="#CDD6E9">
               <Menu.Root>
                 <Menu.Trigger asChild>
                   <IconButton
@@ -125,6 +141,8 @@ export const TaskTable: React.FC<{
                         color="icons.1"
                         fontSize="sm"
                         fontWeight="600"
+                        bg="bg.1"
+                        _hover={{ bg: 'gray.50' }}
                       >
                         Edit
                       </Menu.Item>
@@ -133,6 +151,9 @@ export const TaskTable: React.FC<{
                         p="0.5rem"
                         color="icons.1"
                         fontSize="sm"
+                        bg="bg.1"
+                        fontWeight="600"
+                        _hover={{ bg: 'gray.50' }}
                       >
                         Delete
                       </Menu.Item>

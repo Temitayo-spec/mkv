@@ -17,7 +17,10 @@ export const TaskCard: React.FC<{
 }> = ({ task, onEdit }) => (
   <Card.Root
     bg="white"
-    _hover={{ shadow: 'md', transform: 'translateY(-2px)' }}
+    _hover={{
+      transform: 'translateY(-2px)',
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    }}
     transition="all 0.2s"
     cursor="pointer"
     onClick={() => onEdit(task)}
@@ -27,13 +30,13 @@ export const TaskCard: React.FC<{
   >
     <Card.Body p={4}>
       <VStack align="start" gap={3}>
-        <Text fontWeight="semibold" fontSize="sm">
+        <Text fontWeight="semibold" fontSize="sm" color="#464B50">
           {task.name}
         </Text>
 
-        <HStack fontSize="xs" color="gray.500">
+        <HStack fontSize="xs">
           <Calendar size={16} color="#BAC1CC" />
-          <Text>
+          <Text color="#464B50">
             {task.startDate} - {task.endDate}
           </Text>
         </HStack>
@@ -43,7 +46,7 @@ export const TaskCard: React.FC<{
             <ProfileCircle size={16} color="#BAC1CC" />
             <AvatarGroup size="xs">
               {task.assignees.map((user) => (
-                <Avatar.Root key={user.id} size="xs">
+                <Avatar.Root key={user.id} size="xs" w="1.25rem" h="1.25rem" bg="transparent" border="none">
                   <Avatar.Image src={user.avatar} />
                   <Avatar.Fallback name={user.name} />
                 </Avatar.Root>

@@ -39,6 +39,7 @@ export const KanbanColumn: React.FC<{
               fontWeight="600"
               lineHeight="100%"
               letterSpacing="-0.0175rem"
+              color="#464B50"
             >
               {status}
             </Text>
@@ -51,6 +52,7 @@ export const KanbanColumn: React.FC<{
             display="flex"
             alignItems="center"
             justifyContent="center"
+            color="#464B50"
           >
             ({tasks.length})
           </Badge>
@@ -84,9 +86,10 @@ export const KanbanColumn: React.FC<{
             py="0.63rem"
             px="0.88rem"
             justifyContent="flex-start"
+            color="#464B50"
           >
-            <Add size={20} color="#464B50" />
-            <Text>Add Task</Text>
+            <Add size={20} />
+            <Text fontSize="sm" fontWeight="500">Add Task</Text>
           </Button>
         </VStack>
       </Box>

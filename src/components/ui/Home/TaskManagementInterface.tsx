@@ -119,6 +119,7 @@ export const TaskManagementInterface: React.FC = () => {
             h="2.875rem"
             borderWidth="1px"
             borderColor="strokes.1"
+            color="#464B50"
           >
             <ArrowCircleLeft2 size="1.625rem" />
           </IconButton>
