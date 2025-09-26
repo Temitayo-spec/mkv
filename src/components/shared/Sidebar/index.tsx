@@ -41,6 +41,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isCollapsed = false, onToggle }) => {
       transition="width 0.25s ease"
       position="relative"
       overflow="hidden"
+      flexShrink={0}
     >
       <VStack gap={0} align="stretch" h="full">
         <SidebarHeader isCollapsed={isCollapsed} onToggle={onToggle!} />

@@ -10,3 +10,32 @@ interface SidebarProps {
   isCollapsed?: boolean;
   onToggle?: () => void;
 }
+
+interface User {
+  id: string;
+  name: string;
+  avatar: string;
+}
+
+interface Task {
+  id: string;
+  name: string;
+  startDate: string;
+  endDate: string;
+  assignees: User[];
+  priority: 'Low' | 'Medium' | 'Important' | 'Urgent';
+  status: 'To Do' | 'In Progress' | 'Complete';
+}
+
+interface FormErrors {
+  name?: string;
+  startDate?: string;
+  endDate?: string;
+  dateRange?: string;
+  assignees?: string;
+  priority?: string;
+  general?: string;
+}
+
+type FormDataField = keyof typeof formData;
+type FormDataValue = string | User[] | Task['priority'] | Task['status'];

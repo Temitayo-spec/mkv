@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Plus_Jakarta_Sans } from 'next/font/google';
+import { Montserrat, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import { OverallLayout } from '@/components';
 
@@ -7,6 +7,11 @@ const plus_jakarta_sans = Plus_Jakarta_Sans({
   variable: '--font-plus-jakarta-sans',
   subsets: ['latin'],
 });
+
+const montserrat = Montserrat({
+  variable: '--font-montserrat',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: 'MKV',
@@ -20,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plus_jakarta_sans.variable} ${plus_jakarta_sans.className}`}>
+      <body className={`${plus_jakarta_sans.variable} ${plus_jakarta_sans.className} ${montserrat.variable}`}>
         <OverallLayout>
           {children}
         </OverallLayout>

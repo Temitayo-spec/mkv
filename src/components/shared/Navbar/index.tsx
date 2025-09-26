@@ -6,7 +6,7 @@ import { Box, Flex, IconButton, HStack } from '@chakra-ui/react';
 import { Link1, Notification } from 'iconsax-reactjs';
 import { SearchBox } from './SearchBox';
 import { CompanyIcon } from './CompanyIcon';
-import { UserMenu } from './UseMenu';
+import { UserMenu } from './UserMenu';
 import { ActionButton } from './ActionButton';
 
 const companyLogos = [company_1, company_2, company_3, company_4];

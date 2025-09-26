@@ -1,16 +1,16 @@
-'use client';
+import { TaskManagementInterface } from '@/components/ui/Home/TaskManagementInterface';
 import { Stack } from '@chakra-ui/react';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'MKV | Home',
-  description: 'Todo list app with Next.js',
-};
 
 export default function Home() {
   return (
-    <Stack>
-    
+    <Stack
+      w="100%"
+      flex={1}
+      p="1.88rem 3.75rem 1.88rem 3.13rem"
+      overflowY="auto"
+      h="calc(100vh - 6.5rem)"
+    >
+      <TaskManagementInterface />
     </Stack>
   );
 }
